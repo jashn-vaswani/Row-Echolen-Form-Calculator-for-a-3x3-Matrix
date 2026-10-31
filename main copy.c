@@ -76,9 +76,7 @@ int main() {
     struct ThreeDegree Temp;
     double a, b, d;
 
-    // =========================================================================
     // STEP 1: Handle the 1st Column (x)
-    // =========================================================================
 
     // IMPORTANT: If E1.x is 0, swap E1 with E2 or E3 BEFORE dividing!
     if (E1.x == 0.0) {
@@ -98,12 +96,10 @@ int main() {
         a = E2.x / E1.x;
         b = E3.x / E1.x;
 
-        E2 = Subtract(E1, E2, a); // Updates E2 in place (replaces Result1)
-        E3 = Subtract(E1, E3, b); // Updates E3 in place (replaces Result2)
+        E2 = Subtract(E1, E2, a); // Updates E2 in place
+        E3 = Subtract(E1, E3, b); // Updates E3 in place
 
-        // =====================================================================
-        // STEP 2A: 1st column had a pivot, so now reduce Rows 2 and 3 (y and z)
-        // =====================================================================
+        // STEP 2: 1st column had a pivot, so now reduce Rows 2 and 3 (y and z)
 
         // If the updated E2.y is 0, try swapping E2 and E3 to get a non-zero pivot
         if (E2.y == 0.0 && E3.y != 0.0) {
@@ -117,7 +113,7 @@ int main() {
             d = E3.y / E2.y;
             E3 = Subtract(E2, E3, d);
         }
-        // Special case: Both E2.y and E3.y are 0! The pivot for Row 2 moves to column z.
+        // If Both E2.y and E3.y are 0, The pivot for Row 2 moves to column z.
         else {
             if (E2.z == 0.0 && E3.z != 0.0) {
                 Temp = E2;
@@ -130,9 +126,7 @@ int main() {
             }
         }
     }
-    // =========================================================================
-    // STEP 2B: Special Case where the ENTIRE 1st column (x) was 0
-    // =========================================================================
+    // STEP 3: Special Case where the ENTIRE 1st column (x) was 0
     else {
         // Since E1.x, E2.x, and E3.x are all 0, find the first pivot in column y
         if (E1.y == 0.0) {
