@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <math.h>
 
+#define RED "\x1B[31m"
+#define GREEN "\x1B[32m"
+#define YELLOW "\x1B[33m"
+#define BLUE "\x1B[34m"
+#define RESET "\x1B[0m"
+
+
 // Single struct for all rows so we don't need separate Subtract1 and Subtract2 functions
 struct ThreeDegree {
     double x;
@@ -22,46 +29,49 @@ struct ThreeDegree Subtract(struct ThreeDegree E1, struct ThreeDegree E2, double
 }
 
 int main() {
-    printf("[a\t b\t c]\n");
-    printf("[d\t e\t f]\n");
-    printf("[g\t h\t i]\n");
+    printf(YELLOW "[a\t b\t c]\n" RESET);
+    printf(YELLOW "[d\t e\t f]\n" RESET);
+    printf(YELLOW "[g\t h\t i]\n" RESET);
 
     struct ThreeDegree E1;
-    printf("what is the value of a?\n");
+    printf(RED "what is the value of a?\n" RESET);
     scanf("%lf", &E1.x);
-    printf("what is the value of b?\n");
+    printf(RED "what is the value of b?\n" RESET);
     scanf("%lf", &E1.y);
-    printf("what is the value of c?\n");
+    printf(RED "what is the value of c?\n" RESET);
     scanf("%lf", &E1.z);
 
-    printf("[%lf\t %lf\t %lf]\n", E1.x, E1.y, E1.z);
-    printf("[d\t e\t f]\n");
-    printf("[g\t h\t i]\n");
+    printf(YELLOW "[%lf\t %lf\t %lf]\n" RESET, E1.x, E1.y, E1.z);
+    printf(YELLOW "[d\t e\t f]\n" RESET);
+    printf(YELLOW "[g\t h\t i]\n" RESET);
 
     struct ThreeDegree E2;
-    printf("what is the value of d?\n");
+    printf(RED "what is the value of d?\n" RESET);
     scanf("%lf", &E2.x);
-    printf("what is the value of e?\n");
+    printf(RED "what is the value of e?\n" RESET);
     scanf("%lf", &E2.y);
-    printf("what is the value of f?\n");
+    printf(RED "what is the value of f?\n" RESET);
     scanf("%lf", &E2.z);
 
-    printf("[%lf\t %lf\t %lf]\n", E1.x, E1.y, E1.z);
-    printf("[%lf\t %lf\t %lf]\n", E2.x, E2.y, E2.z);
-    printf("[g\t h\t i]\n");
+    printf(YELLOW "[%lf\t %lf\t %lf]\n" RESET, E1.x, E1.y, E1.z);
+    printf(YELLOW "[%lf\t %lf\t %lf]\n" RESET, E2.x, E2.y, E2.z);
+    printf(YELLOW "[g\t h\t i]\n" RESET);
 
     struct ThreeDegree E3;
-    printf("what is the value of g?\n");
+    printf(RED "what is the value of g?\n" RESET);
     scanf("%lf", &E3.x);
-    printf("what is the value of h?\n");
+    printf(RED "what is the value of h?\n" RESET);
     scanf("%lf", &E3.y);
-    printf("what is the value of i?\n");
+    printf(RED "what is the value of i?\n" RESET);
     scanf("%lf", &E3.z);
 
-    printf("\nThe input matrix is:\n");
-    printf("[%lf\t %lf\t %lf]\n", E1.x, E1.y, E1.z);
-    printf("[%lf\t %lf\t %lf]\n", E2.x, E2.y, E2.z);
-    printf("[%lf\t %lf\t %lf]\n", E3.x, E3.y, E3.z);
+    printf(GREEN "\nThe input matrix is:\n" RESET);
+    printf(YELLOW "[%lf\t %lf\t %lf]\n" RESET, E1.x, E1.y, E1.z);
+    printf(YELLOW "[%lf\t %lf\t %lf]\n" RESET, E2.x, E2.y, E2.z);
+    printf(YELLOW "[%lf\t %lf\t %lf]\n" RESET, E3.x, E3.y, E3.z);
+
+    printf("\n");
+    printf("*************************************************************************\n");
 
     struct ThreeDegree Temp;
     double a, b, d;
@@ -179,10 +189,10 @@ int main() {
     }
 
     // Print the final Row Echelon Form
-    printf("\nThe Row Echelon form of the matrix is:\n");
-    printf("[%lf\t %lf\t %lf]\n", E1.x, E1.y, E1.z);
-    printf("[%lf\t %lf\t %lf]\n", E2.x, E2.y, E2.z);
-    printf("[%lf\t %lf\t %lf]\n", E3.x, E3.y, E3.z);
+    printf(BLUE "\nThe Row Echelon form of the matrix is:\n" RESET);
+    printf(YELLOW "[%lf\t %lf\t %lf]\n" RESET, E1.x, E1.y, E1.z);
+    printf(YELLOW "[%lf\t %lf\t %lf]\n" RESET, E2.x, E2.y, E2.z);
+    printf(YELLOW "[%lf\t %lf\t %lf]\n" RESET, E3.x, E3.y, E3.z);
 
     return 0;
 }
